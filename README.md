@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Creative Frontend Portfolio — 3D Apple Showcase
 
-## Getting Started
+An immersive, high-performance web portfolio piece inspired by Apple's product showcase pages. Built with a modern tech stack to demonstrate advanced 3D web graphics, scroll-driven animations, and type-safe component architecture.
 
-First, run the development server:
+## 🚀 Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **3D & Graphics:** [Three.js](https://threejs.org/), [React Three Fiber (R3F)](https://docs.pmnd.rs/react-three-fiber), [Drei](https://docs.pmnd.rs/react-three-drei)
+- **Animation:** [GSAP (GreenSock Animation Platform)](https://greensock.com/) & ScrollTrigger
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Interactive 3D Model Rendering:** Custom GLTF/GLB asset loading with dynamic lighting and camera positioning.
+- **Scroll-Driven Storytelling:** Synchronized GSAP animations tied directly to the user's scroll position.
+- **Strict Type Safety:** Fully typed props, canvas states, and animation hooks.
+- **Performance Optimized:** Dynamic client-side rendering with SSR boundaries (`'use client'`) and lazy loading (`React.Suspense`).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Getting Started Locally
 
-## Learn More
+1. **Clone the repository:**
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   git clone https://github.com/greg-motion-dev/apple-3d-showcase.git
+   cd apple-3d-showcase
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install dependencies:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   npm install
+   ```
 
-## Deploy on Vercel
+3. **Run the development server:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+
+## 🛡️ Privacy & Indexing
+
+This repository is configured with strict `noindex`/`nofollow` directives for private portfolio presentation and job applications.
+
+---
+
+_Built with precision by [greg-motion-dev](https://github.com/greg-motion-dev)._
