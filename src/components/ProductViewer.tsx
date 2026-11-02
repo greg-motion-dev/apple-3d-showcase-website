@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import useMacbookStore from "@/store";
 import clsx from "clsx";
 import { Canvas } from "@react-three/fiber";
-import MacbookModel14 from "./models/Macbook-14";
 import StudioLights from "./three/StudioLights";
 import ModelSwitcher from "./three/ModelSwitcher";
 import { useMediaQuery } from "react-responsive";
@@ -15,7 +14,6 @@ const ProductViewer: React.FC = () => {
 
   const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
 
-  // Ensure window-dependent hooks (useMediaQuery) & Canvas run only on the client
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -76,7 +74,6 @@ const ProductViewer: React.FC = () => {
           camera={{ position: [0, 2, 5], fov: 50, near: 0.1, far: 100 }}
         >
           <StudioLights />
-          <MacbookModel14 scale={0.06} position={[0, 0, 0]} />
           <ModelSwitcher
             scale={isMobile ? scale - 0.03 : scale}
             isMobile={isMobile}
