@@ -14,7 +14,7 @@ const useMacbookStore = create<MacbookState>((set) => ({
   scale: 0.08,
   setScale: (scale) => set({ scale }),
 
-  reset: () => set({ color: "#2e2c3c", scale: 0.08 }),
+  reset: () => set({ color: "#2e2c2c", scale: 0.08 }),
 }));
 
 export default useMacbookStore;

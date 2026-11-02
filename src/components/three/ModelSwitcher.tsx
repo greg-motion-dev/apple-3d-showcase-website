@@ -1,32 +1,51 @@
+import React, { useRef } from "react";
 import { PresentationControls } from "@react-three/drei";
-import { useRef } from "react";
-import MacbookModel14 from "../models/Macbook-14";
-import MacbookModel16 from "../models/Macbook-16";
+import * as THREE from "three";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import MacbookModel14 from "../models/Macbook-14";
+import MacbookModel16 from "../models/Macbook-16";
 
 const ANIMATION_DURATION = 1;
 const OFFSET_DISTANCE = 5;
 
-const fadeMeshes = (group, opacity) => {
+interface ModelSwitcherProps {
+  scale: number;
+  isMobile: boolean;
+}
+
+const fadeMeshes = (group: THREE.Group | null, opacity: number): void => {
   if (!group) return;
 
-  group.traverse((child) => {
-    if (child.isMesh) {
-      child.material.transparent = true;
-      gsap.to(child.material, { opacity, duration: ANIMATION_DURATION });
+  group.traverse((child: THREE.Object3D) => {
+    if ((child as THREE.Mesh).isMesh) {
+      const mesh = child as THREE.Mesh;
+      const materials = Array.isArray(mesh.material)
+        ? mesh.material
+        : [mesh.material];
+
+      materials.forEach((mat) => {
+        mat.transparent = true;
+        gsap.to(mat, { opacity, duration: ANIMATION_DURATION });
+      });
     }
   });
 };
 
-const moveGroup = (group, x) => {
+const moveGroup = (group: THREE.Group | null, x: number): void => {
   if (!group) return;
   gsap.to(group.position, { x, duration: ANIMATION_DURATION });
 };
 
-const ModelSwitcher = ({ scale, isMobile }) => {
-  const smallMacbookRef = useRef();
-  const largeMacBookRef = useRef();
+const ModelSwitcher: React.FC<ModelSwitcherProps> = ({ scale, isMobile }) => {
+  const SCALE_LARGE_DESKTOP = 0.08;
+  const SCALE_LARGE_MOBILE = 0.05;
+
+  const smallMacbookRef = useRef<THREE.Group>(null);
+  const largeMacBookRef = useRef<THREE.Group>(null);
+
+  const showLargeMacbook =
+    scale === SCALE_LARGE_DESKTOP || scale === SCALE_LARGE_MOBILE;
 
   useGSAP(() => {
     if (showLargeMacbook) {
@@ -44,14 +63,14 @@ const ModelSwitcher = ({ scale, isMobile }) => {
     }
   }, [scale]);
 
-  const showLargeMacbook = scale === 0.08 || scale === 0.05;
   const controlsConfig = {
     snap: true,
     speed: 1,
     zoom: 1,
-    azimuth: [-Infinity, Infinity],
+    azimuth: [-Infinity, Infinity] as [number, number],
     config: { mass: 1, tension: 0, friction: 26 },
   };
+
   return (
     <>
       <PresentationControls {...controlsConfig}>
@@ -60,7 +79,7 @@ const ModelSwitcher = ({ scale, isMobile }) => {
         </group>
       </PresentationControls>
       <PresentationControls {...controlsConfig}>
-        <group ref={largeMacBookRef}>
+        <group ref={smallMacbookRef}>
           <MacbookModel14 scale={isMobile ? 0.03 : 0.06} />
         </group>
       </PresentationControls>
