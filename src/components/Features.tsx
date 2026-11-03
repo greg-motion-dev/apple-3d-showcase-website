@@ -83,9 +83,10 @@ const ModelScroll: React.FC = () => {
     <group ref={groupRef}>
       <Suspense
         fallback={
-          <Html center>
-            <h1 className="text-white text-3xl uppercase">Loading...</h1>
-          </Html>
+          <mesh position={[0, -1, 0]}>
+            <boxGeometry args={[1, 0.1, 1]} />
+            <meshBasicMaterial color="#333333" wireframe />
+          </mesh>
         }
       >
         <MacbookModel16 scale={isMobile ? 0.05 : 0.08} position={[0, -1, 0]} />
