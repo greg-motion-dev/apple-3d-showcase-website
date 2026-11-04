@@ -4,7 +4,7 @@ import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
 import StudioLights from "./three/StudioLights";
-import MacbookModel16 from "./models/Macbook-16";
+import MacbookModel from "./models/Macbook";
 import { features, featureSequence } from "../constants/index";
 import clsx from "clsx";
 import { useMediaQuery } from "react-responsive";
@@ -89,7 +89,7 @@ const ModelScroll: React.FC = () => {
           </mesh>
         }
       >
-        <MacbookModel16 scale={isMobile ? 0.05 : 0.08} position={[0, -1, 0]} />
+        <MacbookModel scale={isMobile ? 0.05 : 0.08} position={[0, -1, 0]} />
       </Suspense>
     </group>
   );

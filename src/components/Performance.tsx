@@ -64,8 +64,13 @@ const Performance = () => {
     <section id="performance" ref={sectionRef}>
       <h2>Next-level graphics performance. Game on.</h2>
       <div className="wrapper">
-        {performanceImages.map(({ id, src }) => (
-          <img key={id} src={src} alt={id} className={id} /> // Added className={id} so CSS positioning works!
+        {performanceImages.map((item, index) => (
+          <img
+            key={index}
+            src={item.src}
+            className={item.id}
+            alt={item.alt || `Performance Image #${index + 1}`}
+          />
         ))}
       </div>
       <div className="content">
