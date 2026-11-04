@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
 import { performanceImages, performanceImgPositions } from "../constants/index";
 import { useRef } from "react";
 import { gsap } from "gsap";
@@ -9,12 +10,19 @@ import { useMediaQuery } from "react-responsive";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Performance = () => {
+const Performance: React.FC = () => {
+  const [mounted, setMounted] = useState<boolean>(false);
   const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
   const sectionRef = useRef<HTMLElement>(null);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   useGSAP(
     () => {
+      if (!mounted) return;
+
       gsap.fromTo(
         ".content p",
         { opacity: 0, y: 10 },
@@ -57,7 +65,7 @@ const Performance = () => {
         tl.to(`.${pos.id}`, toVars, 0);
       });
     },
-    { scope: sectionRef, dependencies: [isMobile] },
+    { scope: sectionRef, dependencies: [isMobile, mounted] },
   );
 
   return (
@@ -66,10 +74,10 @@ const Performance = () => {
       <div className="wrapper">
         {performanceImages.map((item, index) => (
           <img
-            key={index}
+            key={item.id}
             src={item.src}
             className={item.id}
-            alt={item.alt || `Performance Image #${index + 1}`}
+            alt={`Performance Image ${item.id}`}
           />
         ))}
       </div>

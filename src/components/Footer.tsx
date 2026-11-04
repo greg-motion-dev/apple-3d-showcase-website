@@ -1,8 +1,9 @@
 "use client";
 
+import React from "react";
 import { footerLinks } from "@/constants";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <footer>
       <div className="info">
