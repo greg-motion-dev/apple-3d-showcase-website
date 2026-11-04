@@ -1,6 +1,37 @@
 export interface NavLink {
-  label: string;
-  href?: string;
+  readonly label: string;
+  readonly href?: string;
+}
+
+export interface PerformanceImage {
+  readonly id: string;
+  readonly src: string;
+}
+
+export interface PerformanceImgPosition {
+  readonly id: string;
+  readonly left?: number;
+  readonly right?: number;
+  readonly bottom: number;
+}
+
+export interface Feature {
+  readonly id: number;
+  readonly icon: string;
+  readonly highlight: string;
+  readonly text: string;
+  readonly styles: string;
+}
+
+export interface FeatureSequence {
+  readonly videoPath: string;
+  readonly boxClass: string;
+  readonly delay: number;
+}
+
+export interface FooterLink {
+  readonly label: string;
+  readonly link: string;
 }
 
 export const navLinks: readonly NavLink[] = [
@@ -31,11 +62,6 @@ export const noChangeParts: readonly string[] = [
   "Object_10",
 ] as const;
 
-export interface PerformanceImage {
-  readonly id: string;
-  readonly src: string;
-}
-
 export const performanceImages: readonly PerformanceImage[] = [
   { id: "p1", src: "/performance1.png" },
   { id: "p2", src: "/performance2.png" },
@@ -45,13 +71,6 @@ export const performanceImages: readonly PerformanceImage[] = [
   { id: "p6", src: "/performance6.png" },
   { id: "p7", src: "/performance7.png" },
 ] as const;
-
-export interface PerformanceImgPosition {
-  readonly id: string;
-  readonly left?: number;
-  readonly right?: number;
-  readonly bottom: number;
-}
 
 export const performanceImgPositions: readonly PerformanceImgPosition[] = [
   {
@@ -91,14 +110,6 @@ export const performanceImgPositions: readonly PerformanceImgPosition[] = [
   },
 ] as const;
 
-export interface Feature {
-  readonly id: number;
-  readonly icon: string;
-  readonly highlight: string;
-  readonly text: string;
-  readonly styles: string;
-}
-
 export const features: readonly Feature[] = [
   {
     id: 1,
@@ -137,16 +148,18 @@ export const features: readonly Feature[] = [
   },
 ] as const;
 
-export interface FeatureSequence {
-  readonly videoPath: string;
-  readonly boxClass: string;
-  readonly delay: number;
-}
-
 export const featureSequence: readonly FeatureSequence[] = [
   { videoPath: "/videos/feature-1.mp4", boxClass: ".box1", delay: 1 },
   { videoPath: "/videos/feature-2.mp4", boxClass: ".box2", delay: 0 },
   { videoPath: "/videos/feature-3.mp4", boxClass: ".box3", delay: 0 },
   { videoPath: "/videos/feature-4.mp4", boxClass: ".box4", delay: 0 },
   { videoPath: "/videos/feature-5.mp4", boxClass: ".box5", delay: 0 },
+] as const;
+
+export const footerLinks: readonly FooterLink[] = [
+  { label: "Privacy Policy", link: "#" },
+  { label: "Terms of Use", link: "#" },
+  { label: "Sales Policy", link: "#" },
+  { label: "Legal", link: "#" },
+  { label: "Site Map", link: "#" },
 ] as const;
